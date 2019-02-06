@@ -1,0 +1,31 @@
+<pre>
+  <code>
+    <textarea cols="90" rows="3" id="textId" class="textId" onclick="this.focus();this.select();CopyToClipboard('textId');" 
+    style="color: black;background: slategray;overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 60px;">&lt;
+    a href="https://www.pexels.com/" title="copy text" alt="copy text" target="_blank"&gt;
+    &lt;
+    img src="https://www.pexels.com/photo/scenic-view-of-beach-248797/" alt="copy text" /&gt;
+    &lt;
+    /a&gt;
+    </textarea>
+  </code>
+</pre>
+
+
+<script>
+    function CopyToClipboard(text) {
+          if (document.selection) {
+            var range = document.body.createTextRange();
+            range.moveToElementText(document.getElementById(text));
+            range.select().createTextRange();
+            document.execCommand("copy");
+            alert("text copied");
+          } else if (window.getSelection) {
+            var range = document.createRange();
+            range.selectNode(document.getElementById(text));
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+            alert("text copied");
+          }
+    }
+    </script>
