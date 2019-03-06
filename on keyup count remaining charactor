@@ -1,0 +1,16 @@
+<textarea class="form-control" name="fmsg" id="fmsg" placeholder="Message" maxlength="500"></textarea>
+<div id="textarea_feedback" style="color:#dcca06;font-weight: #fff;"></div>
+
+
+<script>
+  $(document).ready(function() {
+    var text_max = 500;
+    $('#textarea_feedback').html(text_max + ' characters remaining');
+
+    $('#fmsg').keyup(function() {
+      var text_length = $('#fmsg').val().length;
+      var text_remaining = text_max - text_length;
+      $('#textarea_feedback').html(text_remaining + ' characters remaining');
+    });
+  });
+</script>
