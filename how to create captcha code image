@@ -1,0 +1,68 @@
+<div class="name-field col-md-4 col-xs-12">
+   <div class='CaptchaWrap'>
+        <div id="CaptchaImageCode" class="CaptchaTxtField">
+            <canvas id="CapCode" class="capcode" width="300" height="80"></canvas>
+        </div> 
+        <small style="color:#666; font-size:14px;"><b>Can't read the image? click 
+        <a href='javascript: void();' onclick='CreateCaptcha();' style="text-decoration:none;"><span style="color:#FF0000;">Here</span></a> to refresh</b></small>
+   </div>
+   <input type="hidden" name="jrecaptcha" id="jrecaptcha">
+    <div class="name-field col-md-8 col-xs-12">
+        <input type="text" placeholder="Enter Security Code" name='letters_code' id="letters_code"  required>
+        <ul class="parsley-errors-list filled" id="error-recaptha" style="display:none"><li class="parsley-required">Invalid Captcha ! Please try again !</li></ul>
+    </div>
+</div>
+ 
+ 
+ 
+ CreateCaptcha();
+ 
+function CreateCaptcha() {
+  //$('#InvalidCapthcaError').hide();
+  var alpha = new Array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+                    
+  var i;
+  for (i = 0; i < 6; i++) {
+    var a = alpha[Math.floor(Math.random() * alpha.length)];
+    var b = alpha[Math.floor(Math.random() * alpha.length)];
+    var c = alpha[Math.floor(Math.random() * alpha.length)];
+    var d = alpha[Math.floor(Math.random() * alpha.length)];
+    var e = alpha[Math.floor(Math.random() * alpha.length)];
+    var f = alpha[Math.floor(Math.random() * alpha.length)];
+  }
+  cd = a + ' ' + b + ' ' + c + ' ' + d + ' ' + e + ' ' + f;
+  $('#jrecaptcha').val(cd);
+
+  $('#CaptchaImageCode').empty().append('<canvas id="CapCode" class="capcode" width="300" height="80"></canvas>')
+  var c = document.getElementById("CapCode"),
+      ctx=c.getContext("2d"),
+      x = c.width / 2,
+      img = new Image();
+  img.src = "<?=SITE_URL?>images/salvage-tileable-and-seamless-pattern.jpg";
+  img.onload = function () {
+      var pattern = ctx.createPattern(img, "repeat");
+      ctx.fillStyle = pattern;
+      ctx.fillRect(0, 0, c.width, c.height);
+      ctx.font="46px Roboto Slab";
+      ctx.fillStyle = '#ccc';
+      ctx.textAlign = 'center';
+      ctx.setTransform (1, -0.12, 0, 1, 0, 15);
+      ctx.fillText(cd,x,55);
+  };
+}
+
+
+$("form").submit(function(e){
+   var jrecaptcha = $('#jrecaptcha').val();
+   var letters_code = $('#letters_code').val();
+   if(letters_code !=''){
+    if(jrecaptcha != letters_code){
+        CreateCaptcha();
+        $('#error-recaptha').show();
+        e.preventDefault();
+   }else{
+    $('#error-recaptha').hide();
+   }
+   }
+   
+});
