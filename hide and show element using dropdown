@@ -1,0 +1,51 @@
+#html
+#dropdown
+
+<h3 class="text-center" id="hDealFilter_Comm" style="color:#114e9d; margin-top: 10px;padding-top: 10px;text-align: center;">
+  <span>Select Deals &amp; Specials in:&nbsp;</span>
+  <select id="propLoctionId">
+      <option selected="">All Cities/Communities</option>
+      <option value="seacrest-beach">Seacrest beach</option>
+      <option value="zwischenwasser">Zwischenwasser</option>
+  </select>
+  </h3>
+  
+  #hide div data
+  <div class="row" id="results">
+    <div class="col-md-6 propertyLocation seacrest-beach" data-endlocation="seacrest-beach">
+    </div>
+
+    <div class="col-md-6 propertyLocation seacrest-beach" data-endlocation="seacrest-beach">
+    </div>
+
+    <div class="col-md-6 propertyLocation seacrest-beach" data-endlocation="seacrest-beach">
+    </div>
+</div>
+
+#jquery
+<script>
+  $(document).ready(function(){
+    $("#propLoctionId").on('change', function(){
+      
+      var endlocation = $(this).val();
+
+      var selectedIndexNumber = $('#propLoctionId')[0].selectedIndex;
+
+      if(selectedIndexNumber == 0) {
+
+        $("div[data-endlocation]").show();
+
+      }else{
+
+            $("div[data-endlocation]").filter(function(){
+              return $(this).attr("data-endlocation") !== endlocation;
+            }).hide();
+
+            $("div[data-endlocation]").filter(function(){
+              return $(this).attr("data-endlocation") == endlocation;
+            }).show();
+      }
+    });
+  });
+</script>
+
