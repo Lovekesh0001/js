@@ -1,0 +1,56 @@
+#js
+
+$(document).ready(function() {
+var dateToday = new Date();
+var dateDepart     = $('#start-date');
+var dateReturn     = $('#end-date');
+var spanDateFormat = 'ddd, MMMM D yyyy';
+
+dateDepart.datepicker({
+    minDate : new Date(),
+    showAnim:'drop',
+    numberOfMonths:1,
+    //showButtonPanel: true,
+   dateFormat:'MM dd yy',
+     onSelect: function (selected) {
+                    var dt = new Date(selected);
+                    dt.setDate(dt.getDate() + 1);
+                    dateReturn.datepicker("option", "minDate", dt);
+
+                    setTimeout(function(){
+                    	dateReturn.val($.datepicker.formatDate('MM dd yy', dt));
+                    	 dateReturn.focus(); 
+                    	}, 200);
+                }
+  });
+
+  dateReturn.datepicker({
+    minDate : new Date(),
+    showAnim:'drop',
+    numberOfMonths:1,
+    //showButtonPanel: true,
+   dateFormat:'MM dd yy',
+     onSelect: function (selected) {
+                    var dt = new Date(selected);
+                    dt.setDate(dt.getDate() - 1);
+                   setTimeout(function(){
+                   	if(dateDepart.val() == ''){
+                   		dateDepart.val($.datepicker.formatDate('MM dd yy', dt));
+                   		 dateDepart.focus();
+                   	}
+                    	}, 200);
+                }
+  }).on('change', function() {
+});
+});
+
+#plese include js file and css files
+bootstrap.min.css
+bootstrap-datepicker.min.css
+
+
+jquery.min.js
+moment.min.js
+bootstrap.min.js
+bootstrap-datepicker.min.js
+jquery-ui.js
