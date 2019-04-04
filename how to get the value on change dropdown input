@@ -1,0 +1,11 @@
+#HTML
+<select class="form-control" onchange="javascript:show_reference(this.value);">
+    <option value="uuuu">UUUU</option>
+</select>
+
+#SCRIPT
+<script>
+function show_reference(value){
+  console.log(value);
+}
+</script>
