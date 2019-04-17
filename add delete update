@@ -27,10 +27,21 @@
   </tbody>
 </table>
 
-#jquery
+#jquery delete
 $(document.body).on('click', "button[name='delete_amenity']" ,function(){
   var deleteRow = $(this);
   deleteRow.closest("tr").fadeOut( "fast", function() {
 
   });
 })
+
+#jquery update
+$(document.body).on('click', "button[name='edit_amenity']" ,function(){
+  $("input[name='amenity_id']").val($(this).attr("data-amenityId"));
+  var amenity_name = $(this).closest("tr").find("td:eq(1)").text();
+  $("input[name='amenity_name']").val(amenity_name);
+  $("#amn_submit").text("Update");
+  $("#amenityForm").toggle("fast", function(){
+
+    });
+});
