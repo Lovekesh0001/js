@@ -1,0 +1,9 @@
+$("button[name='delete_amenity']").on('click', function(){
+
+});
+
+#if not working try this
+
+$(document.body).on('click', "button[name='delete_amenity']" ,function(){
+
+});
