@@ -1,0 +1,36 @@
+#html
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+    <th>S.No</th>
+      <th>Amenity Category</th>
+      <th>Amenities</th>  
+      <th>Customize Your Amenity</th>
+      <th>Delete</th>
+      <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody><tr id="amenity_49">
+  <td>1</td>
+    <td>fgghghghh</td>
+    <td>dddddddd</td>
+    <td>+ -</td>
+  <td>
+        <button type="button" class="btn btn-danger" name="delete_amenity" data-amenityid="49"><i class="fa fa-trash"></i></button>
+  </td>
+  <td>
+      <a href="&lt;?=ADMIN_URL?&gt;property-details.php?pid=">
+        <button type="submit" name="edit_pro_button" class="btn btn-info"><i class="fa fa-pencil"></i></button>
+      </a>
+  </td>
+  </tr>         
+  </tbody>
+</table>
+
+#jquery
+$(document.body).on('click', "button[name='delete_amenity']" ,function(){
+  var deleteRow = $(this);
+  deleteRow.closest("tr").fadeOut( "fast", function() {
+
+  });
+})
