@@ -2,28 +2,30 @@
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
-    <th>S.No</th>
-      <th>Amenity Category</th>
-      <th>Amenities</th>  
-      <th>Customize Your Amenity</th>
-      <th>Delete</th>
-      <th>Edit</th>
+        <th> S.No </th>
+        <th>Heading</th>
+        <th>Content</th>    
+        <th>Image</th> 
+        <th>Delete</th>
+        <th>Edit</th>
     </tr>
     </thead>
-    <tbody><tr id="amenity_49">
-  <td>1</td>
-    <td>fgghghghh</td>
-    <td>dddddddd</td>
-    <td>+ -</td>
-  <td>
-        <button type="button" class="btn btn-danger" name="delete_amenity" data-amenityid="49"><i class="fa fa-trash"></i></button>
-  </td>
-  <td>
-      <a href="&lt;?=ADMIN_URL?&gt;property-details.php?pid=">
-        <button type="submit" name="edit_pro_button" class="btn btn-info"><i class="fa fa-pencil"></i></button>
-      </a>
-  </td>
-  </tr>         
+    <tbody> 
+    <tr>
+      <td><?php echo $i ?></td>
+      <td><?php echo $f_heading; ?></td>
+      <td><?php echo html_entity_decode(substr($f_content, 0, 30)); ?><div class="hide f_content"><?php echo html_entity_decode($f_content); ?></div></td>
+      <td><img src="backend_assets/images/user2-160x160.jpg" style="width:50px;height: 40px"></td>
+    <td>
+       <form action="" method="post">
+          <input type="hidden" name="delete_property" value="<?php echo @$show11['f_id']; ?>">
+          <button type="submit" class="btn btn-danger" name="delete_pro_button" onClick="return deleteConfCheck()"><i class="fa fa-trash"></i></button>
+      </form>
+    </td>
+      <td>
+          <button type="submit" name="edit_pro_button" class="btn btn-info" data-icalId = "<?php echo @$show11['f_id']; ?>"><i class="fa fa-pencil"></i></button>
+    </td>
+    </tr>
   </tbody>
 </table>
 
@@ -36,12 +38,17 @@ $(document.body).on('click', "button[name='delete_amenity']" ,function(){
 })
 
 #jquery update
-$(document.body).on('click', "button[name='edit_amenity']" ,function(){
-  $("input[name='amenity_id']").val($(this).attr("data-amenityId"));
-  var amenity_name = $(this).closest("tr").find("td:eq(1)").text();
-  $("input[name='amenity_name']").val(amenity_name);
-  $("#amn_submit").text("Update");
-  $("#amenityForm").toggle("fast", function(){
+$(document.body).on('click', "button[name='edit_pro_button']" ,function(){
+  $("input[name='f_id']").val($(this).attr("data-icalid"));
+  var f_heading = $(this).closest("tr").find("td:eq(1)").text();
+  var f_content = $(this).closest("tr").find(".f_content").html();
+  var image = $(this).closest("tr").find("img").attr("src");
+
+  $("input[name='f_heading']").val(f_heading);
+ CKEDITOR.instances.f_content.setData(f_content);
+ $("#image").attr("src",image);
+  $("button[name='add_property_submit']").text("Update");
+  $("#headingForm").toggle("fast", function(){
 
     });
 });
