@@ -1,0 +1,62 @@
+#html
+<table>
+  <tr class="read-more-less" data-id="1100">
+    <td class="read-toggle" data-id='0'>
+        The home is nothing short of pure perfection. A completely turnkey, fully accommodating monthly vacation rental in Key West is 
+        very hard to come by, 
+        but Cabana Chic steals the show! Located in the heart of downtown Key West, just one block from Duval 
+        St, this house is walking distance to beaches, fine dining, art galleries, boutiques, the Butterfly Conservatory,
+        and the world famous Duval St street nightlife.The house itself faces Simonton St and backs up to a large courtyard 
+        area just off the back porch and is a few steps from the complex's pool. The pool area boasts a tropical waterfall 
+        feature and plenty of unabated sunshine.The home's interior layout is one of quality and comfort. There is a full
+        bathroom downstairs by the front door for guest use as well as two full bathrooms in the upstairs bedrooms - an en 
+        suite in the master and jack and jill between the two spare bedrooms.
+    </td>
+  </tr>
+</table>
+
+
+
+
+#js
+<script>
+$(document).ready(function() {
+    var contentArray = [];
+    var index = "";
+    var clickedIndex = "";
+    var minimumLength = $('.read-more-less').attr('data-id');
+    var initialContentLength = [];
+    var initialContent = [];
+    var readMore = "........<span class='read-more'><a href='javascript:void(0)' class='more'>more <i class='fa fa-arrow-circle-o-down' aria-hidden='true'></i></a></span>";
+    var readLess = "<span class='read-less'><a href='javascript:void(0)' class='less'> less <i class='fa fa-arrow-circle-o-up' aria-hidden='true'></i></a></span>";
+    $('.read-toggle').each(function() {
+        index = $(this).attr('data-id');
+        contentArray[index] = $(this).html();
+        initialContentLength[index] = $(this).html().length;
+        if (initialContentLength[index] > minimumLength) {
+            initialContent[index] = $(this).html().substr(0, minimumLength);
+        } else {
+            initialContent[index] = $(this).html();
+        }
+       if($('.read-more-less').text().length < minimumLength){
+
+        }else{
+            $(this).html(initialContent[index] + readMore);
+        }
+        
+
+    });
+    $(document).on('click', '.read-more', function() {
+        $(this).fadeOut(10, function() {
+            clickedIndex = $(this).parents('.read-toggle').attr('data-id');
+            $(this).parents('.read-toggle').html(contentArray[clickedIndex] + readLess);
+        });
+    });
+    $(document).on('click', '.read-less', function() {
+        $(this).fadeOut(10, function() {
+            clickedIndex = $(this).parents('.read-toggle').attr('data-id');
+            $(this).parents('.read-toggle').html(initialContent[clickedIndex] + readMore);
+        });
+    });
+});  
+</script> 
