@@ -1,0 +1,28 @@
+<script>    
+    var lastScroll = 0;
+    var $sidebar = $(".inner-search"),
+        $window = $(window),
+        offset = $sidebar.offset(),
+        topPadding = 0; 
+      $(window).scroll(function(event){
+          var st = $(this).scrollTop();
+          if (st < lastScroll){
+            $(".map12").css({ "position":"fixed","top":"140px"});
+          }
+          if (st > lastScroll){
+            $(".map12").css({ "position":"fixed","top":"140px"});
+          }
+          lastScroll = st;
+          
+          scrollDistance = $(window).scrollTop() + $(window).height();
+    footerDistance = $('.site-footer').offset().top;
+
+    if (scrollDistance >= footerDistance) {
+
+        $(".map12").css({ "position":"relative","right":"10px","bottom":"0"});
+    }
+       if ($window.scrollTop() < offset.top) {
+        $(".map12").css({"position":"fixed","top":"197px"});
+        }   
+      });
+</script>
