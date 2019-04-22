@@ -1,0 +1,23 @@
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+#html
+<div class="col-md-12">
+  <div class="g-recaptcha" data-sitekey="6LemyWYUAAAAAOK2snxeA0oFNnIU5bvGNNUl_hIZ" data-callback="recaptchaCallback" data-expired-callback="recaptchaExpired"></div>
+ <input type="text" name="" id="hidden-grecaptcha" value="">
+</div>
+
+#js
+function recaptchaCallback() {
+    var response = grecaptcha.getResponse();
+    // console.log(response);
+    $("#hidden-grecaptcha").val(response);
+}
+
+function recaptchaExpired() {
+    $("#hidden-grecaptcha").val("");
+}
+
+function reviewfrmval(){
+if(""==$("#hidden-grecaptcha").val())return alert("Recaptcha is required."),$(".g-recaptcha").focus(),!1;
+//var v=$("#reviewfrm").serialize();return $.ajax({url:"/vacation-rentals/reviewsend-frm",type:"POST",data:v,success:function(e){alert(e),$("#reviewfrm")[0].reset()}}),!1
+}
