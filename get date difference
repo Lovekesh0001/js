@@ -1,9 +1,10 @@
 ================================================================================================
-var newDate = new Date();
-var month = newDate.getMonth()+1;
-var date = newDate.getDate();
-var year = newDate.getFullYear();
-================================================================================================
+
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var todaysFullDate = new Date();
+var month = todaysFullDate.getMonth()+1;
+var date = todaysFullDate.getDate();
+var year = todaysFullDate.getFullYear();
 
 ================================================================================================
 //days in month
@@ -14,4 +15,46 @@ function daysInMonth (month, year) {
 
 var allDays = daysInMonth(month,year);
  
+================================================================================================
+
+================================================================================================
+// this month
+thisyear = year;
+
+// this month
+thisMonth = months[month-1];
+// next Month
+month = month;
+nextMonth = months[month];
+
+// previous month
+month = month-2;
+previosMonth = months[month];
+================================================================================================
+
+================================================================================================
+// get all dates between two dates
+	Date.prototype.addDays = function(days) {
+       var dat = new Date(this.valueOf())
+       dat.setDate(dat.getDate() + days);
+       return dat;
+   }
+
+
+ function getDates(startDate, stopDate) {
+    var dateArray = [];
+    var currentDate = moment(startDate);
+    var stopDate = moment(stopDate);
+    while (currentDate <= stopDate) {
+        dateArray.push( moment(currentDate).format('YYYY-MM-DD') )
+        currentDate = moment(currentDate).add(1, 'days');
+    }
+    return dateArray;
+}
+
+var dateArray = getDates("2019-04-09", "2019-04-29");
+for (i = 0; i < dateArray.length; i ++ ) {
+    console.log(dateArray[i]);
+}
+// two dates array
 ================================================================================================
