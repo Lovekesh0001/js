@@ -54,3 +54,7 @@ moment.min.js
 bootstrap.min.js
 bootstrap-datepicker.min.js
 jquery-ui.js
+
+or only add these
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"> 
