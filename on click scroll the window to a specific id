@@ -1,6 +1,18 @@
+#html
+<div class="contactscroll">
+  <a href="#contact" class="btnType5  contactdown">Email Owner</a>
+</div>
+<div class="right-details" id="contact" data-spy="affix" data-offset-top="50">
+</div>
+
+
 #js
-var $root = $('html, body');
-$('.reviewsdown').click(function() {
+<script>
+  $(".contactscroll").on('click',function(){
+        $(this).hide();
+    });
+  
+  $('.contactdown').click(function() {
     var href = $.attr(this, 'href');
 
     $root.animate({
@@ -8,6 +20,33 @@ $('.reviewsdown').click(function() {
     }, 1000, function () {
         window.location.hash = href;
     });
-
+   // $(this).addClass("hide");
+   
     return false;
 });
+
+  var lastScroll = 0;
+    var $sidebar = $(".inner-search"),
+        $window = $(window),
+        offset = $sidebar.offset(),
+        topPadding = 0; 
+      $(window).scroll(function(event){
+          var st = $(this).scrollTop();
+          if (st < lastScroll){
+            $(".contactdown").removeClass("hide");
+          }
+          if (st > lastScroll){
+             $(".contactdown").removeClass("hide");
+          }
+          lastScroll = st;
+          
+          scrollDistance = $(window).scrollTop() + $(window).height() + 200;
+    footerDistance = $('#contact').offset().top;
+    if (scrollDistance >= footerDistance) {
+            $(".contactdown").addClass("hide");
+    }
+       if ($window.scrollTop()+100 < $('#contact').offset().top) {
+        $(".contactdown").removeClass("hide");
+        }   
+      });
+</script>
