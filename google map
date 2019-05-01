@@ -1,0 +1,112 @@
+#js
+
+function ajaxpropertylatlong(){
+  $.ajax({
+            url: 'ajaxpropertylatlong?destinationid='+destinationid,
+            type: "GET",
+            data: '',
+            dataType:'json',
+            beforeSend: function () {
+                
+            },
+            success:function(data){
+              var latlong = data.propertylatlong;
+              initMap(latlong)
+              //data = JSON.parse(data);
+            }
+        });
+}
+
+
+function initMap(latlong) {
+  var mark1 = "<?php echo base_url() ?>icon/mark1.png";
+   var mark2 = "<?php echo base_url() ?>icon/mark2.png";
+   
+         if(parseFloat(latlong[0].proplatlong.lat) == 0){
+             latitude = parseFloat(latlong[1].proplatlong.lat);
+                 longitude = parseFloat(latlong[1].proplatlong.longt);
+          }else if(parseFloat(latlong[1].proplatlong.lat) == 0){
+            latitude = parseFloat(latlong[2].proplatlong.lat);
+                longitude = parseFloat(latlong[2].proplatlong.longt);
+          }else{
+            latitude = parseFloat(latlong[3].proplatlong.lat);
+                longitude = parseFloat(latlong[3].proplatlong.longt);
+          }
+
+        var center = {lat:latitude, lng:longitude};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: center,
+          scrollwheel: true,
+          animation: google.maps.Animation.DROP,
+         //navigationControl: true ,
+          //mapTypeControl: true,
+          //scaleControl: true,
+          draggable: true,
+        });
+          $.each(latlong, function( key, value ) {
+            var kkkk = value.destinationnew;
+            var lower = kkkk[1][kkkk[1].length-1].toLowerCase();
+              var explode = lower.split(" ");
+              var implode = explode.join("-");
+            addMArker({
+                      coords:{lat:parseFloat(value.proplatlong.lat), lng:parseFloat(value.proplatlong.longt)},
+                      iconImage:mark1,
+                      content:"<div id ='properties_'"+value.propertyid+"><a target='_blank' title='Click for more info' href='<?php echo base_url();?>"+implode+"-"+value.propertytype+"/p"+value.propertyid+"'><h6>"+ value.propertyname.substr(0,20) + " | " + value.bedrooms + " | " + value.baths + " | " + value.propertytype +"</h6></a></div>"
+                    });
+                    
+           function addMArker(property){
+             
+                var marker = new google.maps.Marker({
+                position: property.coords,
+                map: map,
+                icon:property.iconImage
+              });
+
+              $('#property_'+value.propertyid).mouseover(function(){
+                
+                var hovericon = mark2;
+                      marker.setIcon(hovericon);
+                   //    infoWindow.open(map, marker);
+                   //    map.setZoom(12);
+                   //    window.setTimeout(function() {
+                   //   map.panTo(marker.getPosition());
+                   // }, 1000);
+                    marker.setZIndex(99999); //hover
+                      
+              });
+
+              $('#property_'+value.propertyid).mouseout(function(){
+                    marker.setIcon(property.iconImage);
+                    infoWindow.open();
+                      marker.setZIndex(undefined); //undo
+              });
+
+              if(property.iconImage){
+                 marker.setIcon(property.iconImage);
+              }
+
+              if(property.content){
+                  var infoWindow = new google.maps.InfoWindow({
+                  content:property.content
+              });
+
+
+              marker.addListener('click', function(){
+                  infoWindow.open(map, marker);  
+
+                  window.setTimeout(function() {
+                     map.panTo(marker.getPosition());
+                   }, 1000);
+              });
+
+              //marker.addListener('click', function(){
+               // infoWindow.open();
+              //});
+          }
+        }
+    });
+  }
+
+  $.getScript("https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=initMap");
+</script>
