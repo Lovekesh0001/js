@@ -20,7 +20,9 @@ function recaptchaExpired() {
     $("#hidden-grecaptcha").val("");
 }
 
-function reviewfrmval(){
-if(""==$("#hidden-grecaptcha").val())return alert("Recaptcha is required."),$(".g-recaptcha").focus(),!1;
-//var v=$("#reviewfrm").serialize();return $.ajax({url:"/vacation-rentals/reviewsend-frm",type:"POST",data:v,success:function(e){alert(e),$("#reviewfrm")[0].reset()}}),!1
-}
+$('#contactUs').submit(function(){
+    if($('#hidden-grecaptcha').val() == ''){
+        alert("Recaptcha is required");
+    return false;
+    }
+});
