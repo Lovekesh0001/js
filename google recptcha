@@ -1,8 +1,11 @@
+https://www.google.com/recaptcha/admin/create  
+go to this site and create recaptcha for the domain
+
 <script src='https://www.google.com/recaptcha/api.js'></script>
 
 #html
 <div class="col-md-12">
-  <div class="g-recaptcha" data-sitekey="6LemyWYUAAAAAOK2snxeA0oFNnIU5bvGNNUl_hIZ" data-callback="recaptchaCallback" data-expired-callback="recaptchaExpired"></div>
+  <div class="g-recaptcha" data-sitekey="6LemyWYUAAAAAOK2snxeA0oFNnIU5bvGNNUererl_hIZ" data-callback="recaptchaCallback" data-expired-callback="recaptchaExpired"></div>
  <input type="text" name="" id="hidden-grecaptcha" value="">
 </div>
 
