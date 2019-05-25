@@ -1,7 +1,0 @@
-#component
- elmnt = document.getElementById('target');
- this.elmnt.scrollIntoView();
- 
- #html
- <div id="wrapper" id="target">
- </div>
