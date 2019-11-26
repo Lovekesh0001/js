@@ -2,7 +2,7 @@
       $('#clickme').on('click', (e) => {
          e.preventDefault();
         e.stopPropagation();
-        $("html").printThis({
+        $("html").printThis({           // for specfic tags $("header, .div1, .div2, .div3,.div4, .div5, .div6").printThis({});
              debug: false,               // show the iframe for debugging
              importCSS: true,            // import parent page css
              importStyle: true,         // import style tags
