@@ -1,0 +1,35 @@
+ #mute{
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 90px;
+  right: 50px;
+  border: 1px solid #000;
+  background-size: cover;
+}
+
+<video id="video" class="hero-background-video"
+    controls autoplay loop muted style="width: 112%;">
+    <source src="video.mp4?mtime=20180806094618" type="video/mp4">
+ </video>
+ <div id="mute" class="btn"></div>
+
+
+
+<script>
+$(document).ready(function() {
+  $("#mute").css("background-image","url(https://image.flaticon.com/icons/svg/10/10776.svg)");
+  
+  $("#mute").click( function (){
+    if( $("video").prop('muted') ) {
+      $("video").prop('muted', false);
+      $("#mute").css("background-image","url(https://image.flaticon.com/icons/svg/10/10430.svg)");
+    } else {
+      $("video").prop('muted', true);
+      $("#mute").css("background-image","url(https://image.flaticon.com/icons/svg/10/10776.svg)");
+    }
+  });
+  
+ });
+             </script>
