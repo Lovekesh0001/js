@@ -1,0 +1,10 @@
+$(window).load(function(){
+	var imgEl = document.getElementsByTagName('img');
+for (var i=0; i<imgEl.length; i++) {
+    if(imgEl[i].getAttribute('data-src')) {
+    	var datasrc = imgEl[i].getAttribute('data-src');
+        imgEl[i].setAttribute('src',datasrc);
+        imgEl[i].removeAttribute('data-src'); //use only if you need to remove data-src attribute after setting src
+    }
+}
+});
