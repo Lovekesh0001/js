@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scroll Events using jquery </title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.property-tabs-wrap {
+    position: relative;
+    margin-bottom: 2px;
+}
+#propertyTabs {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid hsl(0, 0%, 89%);
+    border-bottom: 1px solid hsl(0, 0%, 89%);
+}
+.property-tabs li:first-child {
+    border-left: none;
+}
+
+.property-tabs li {
+    list-style: none;
+    display: table-cell;
+    width: 1%;
+    border-left: 1px solid hsl(0, 0%, 89%);
+}
+.property-tabs li a.active {
+    background: hsl(25, 78%, 50%);
+    color: #fff;
+}
+
+.property-tabs li a {
+    display: block;
+    position: relative;
+    padding: 12px 5px;
+    /* background: #f9f9f9; */
+    font-size: 14px;
+    /* color: #484848; */
+    font-weight: 500;
+    text-align: center;
+    /* -webkit-transition: padding 0.35s, background 0.35s, color 0.35s; */
+    -moz-transition: padding 0.35s, background 0.35s, color 0.35s;
+    -ms-transition: padding 0.35s, background 0.35s, color 0.35s;
+    transition: padding 0.35s, background 0.35s, color 0.35s;
+}
+
+
+.info-wrap .info-wrap-heading {
+    position: relative;
+    padding: 10px 25px;
+    background: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#propertyTabs.fixed {
+    width: 1200px;
+    max-width: calc(100% / 4 * 3);
+    position: fixed;
+    top: 0;
+    z-index: 800;
+    background: #ccc;
+    border-bottom: none;
+    box-shadow: rgba(0,0,0,1) 0 0 10px -3px;
+}
+
+.info-wrap.active .info-wrap-heading {
+    background: hsl(25, 78%, 50%);
+    color: #fff;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="col-md-6">
+		What is Lorem Ipsum?
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br><br>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scra<br><br><br><br>mbled it to make a type specimen book. It has 
+
+
+<div class="property-tabs-wrap">
+        <div id="propertyTabsAnchor" style="height: 0px;"><!-- TRAVEL STICKY TABS ANCHOR FOR SCROLL --></div>
+        <ul id="propertyTabs" class="property-tabs tabs tab-group">
+          <li><a href="#description" class="active"><i class="fa fa-align-left" aria-hidden="true"></i> <span>Description</span></a></li>
+          <li><a href="#calendar"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> <span>Calendar</span></a></li>
+          
+             <li><a href="#amenitiesTours"><i class="fa fa-home" aria-hidden="true"></i> <span>Rates</span></a></li>
+          
+          <li><a href="#amenities"><i class="fa fa-list" aria-hidden="true"></i> <span>Amenities</span></a></li>
+          <li><a href="#reviews"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <span>Reviews</span></a></li>
+         
+        </ul><!-- END propertyTabs -->
+      </div>
+
+<br><br><br>
+<div id="description" name="description" class="info-wrap description-wrap active">
+  <div class="info-wrap-heading"><i class="fa fa-align-left" aria-hidden="true"></i> Description</div>
+  <div class="info-wrap-body">
+    <div id="descBlock" class="desc-block">
+      The Savoy is a Gulf front resort property. This spacious 2,310 sq. ft, beach front Park Shore residence with exceptional Gulf of Mexico views is perfectly located on the 7th floor, just steps to the pool &amp; Gulf of Mexico beaches! Highlights include custom mWithin one mile you can satisfy every need one would have in their resort experience.    </div>
+  </div><!-- END info-wrap-body -->
+</div>
+
+<br><br><br>
+<div id="calendar" name="calendar" class="info-wrap calendar-wrap">
+     <div class="info-wrap-heading">
+       <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Calendar
+    </div>
+  <div class="info-wrap-body">
+
+  </div><!-- END info-wrap-body -->
+</div>
+
+<br><br><br>
+<div id="amenitiesTours" name="amenitiesTours" class="info-wrap amenities-wrap">
+  <div class="info-wrap-heading"><i class="fa fa-home" aria-hidden="true"></i>Rates</div>
+  <div class="info-wrap-body">
+   <!--=================================RAtes=============================================-->
+    the undoubtable s<br><br>ource. Lorem Ipsum comes fro<br><br>m sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory o<br><br>f ethics, very popular during the Renaissa
+
+  </div><!-- END info-wrap-body -->
+</div>
+<br><br><br>
+<div id="amenities" name="amenities" class="info-wrap amenities-wrap">
+  <div class="info-wrap-heading"><i class="fa fa-list" aria-hidden="true"></i> Amenities</div>
+  <div class="info-wrap-body">
+        
+  the undoubtable s<br><br>ource. Lorem Ipsum comes fro<br><br>m sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory o<br><br>f ethics, very popular during the Renaissa
+</div><!-- END info-wrap-body -->
+
+</div>
+
+
+
+
+
+</div>
+
+<div class="col-md-6">
+	What is Lorem Ipsum?
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br><br>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scra<br><br><br><br>mbled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, <br><br>and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+Why do we use it?
+It is a long established fact that a reader will be distracted by the read<br><br>able content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like <br><br>readable English. Many desktop publishing packages a<br><br>nd web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem i<br><br>psum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes <br><br>on purpose (injected humour and the like).
+
+
+Where does it come from?
+Contrary to popular belief, Lorem Ipsum is not simply ran<br><br>dom text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years<br><br> old. Richard McClintock, a Latin professor at Hampden-Sydney College <br><br>in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable s<br><br>ource. Lorem Ipsum comes fro<br><br>m sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory o<br><br>f ethics, very popular during the Renaissance. The first line of Lor<br><br>em Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+What is Lorem Ipsum?
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br><br>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scra<br><br><br><br>mbled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, <br><br>and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+Why do we use it?
+It is a long established fact that a reader will be distracted by the read<br><br>able content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like <br><br>readable English. Many desktop publishing packages a<br><br>nd web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem i<br><br>psum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes <br><br>on purpose (injected humour and the like).
+
+
+Where does it come from?
+Contrary to popular belief, Lorem Ipsum is not simply ran<br><br>dom text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years<br><br> old. Richard McClintock, a Latin professor at Hampden-Sydney College <br><br>in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable s<br><br>ource. Lorem Ipsum comes fro<br><br>m sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory o<br><br>f ethics, very popular during the Renaissa
+What is Lorem Ipsum?
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br><br>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scra<br><br><br><br>mbled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, <br><br>and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+Why do we use it?
+It is a long established fact that a reader will be distracted by the read<br><br>able content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like <br><br>readable English. Many desktop publishing packages a<br><br>nd web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem i<br><br>psum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes <br><br>on purpose (injected humour and the like).
+
+
+Where does it come from?
+Contrary to popular belief, Lorem Ipsum is not simply ran<br><br>dom text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years<br><br> old. Richard McClintock, a Latin professor at Hampden-Sydney College <br><br>in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable s<br><br>ource. Lorem Ipsum comes fro<br><br>m sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory o<br><br>f ethics, very popular during the Renaissa
+
+</div>
+
+</div>
+
+<script>
+function stickyTabs() {
+    var window_top = $(window).scrollTop();
+    var tab_anchor = $('#propertyTabsAnchor').offset().top;
+    if (window_top > tab_anchor) {
+      $('#propertyTabs').addClass('fixed');
+      $('#propertyTabsAnchor').height($('#propertyTabs').outerHeight());
+    } else {
+      $('#propertyTabs').removeClass('fixed');
+      $('#propertyTabsAnchor').height(0);
+    }
+  }
+  $(function() {
+    $(window).scroll(stickyTabs);
+    stickyTabs();
+  });
+
+
+  // VARIABLES FOR FIXED TABS
+  var sections = $('.info-wrap');
+  var tabs = $('#propertyTabs');
+  var tabs_height = tabs.outerHeight();
+  // CLICK TAB - SMOOTH SCROLL INSTEAD OF HARD JUMP
+  tabs.find('a').on('click', function() {
+    var $tab = $(this);
+    var id = $tab.attr('href');
+
+    $('html, body').animate({
+      scrollTop: $(id).offset().top - tabs_height + 2
+    }, 800);
+
+    return false;
+  });
+
+
+  // FIND EACH SECTION on SCROLL or CLICK for JUMP LINKS
+  $(window).on('scroll', function() {
+    var cur_pos = $(this).scrollTop();
+
+    sections.each(function() {
+      var tab_top = $(this).offset().top - tabs_height;
+      var tab_bottom = tab_top + $(this).outerHeight();
+      // ADD/REMOVE ACTIVE CLASS ON TABS
+      if (cur_pos >= tab_top && cur_pos <= tab_bottom) {
+        tabs.find('a').removeClass('active');
+        sections.removeClass('active');
+        $(this).addClass('active');
+        tabs.find('a[href="#'+$(this).attr('id')+'"]').addClass('active');
+
+      // ADD/REMOVE ACTIVE CLASS ON LAST TAB ITEM - WHEN LAST TAB HAS REACHED BOTTOM
+      } else if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+        tabs.find('a').removeClass('active');
+        sections.removeClass('active');
+        $(this).addClass('active');
+        tabs.find('a[href="#'+$(this).attr('id')+'"]').addClass('active');
+      }
+    });
+  });
+
+</script>
+
+</body>
+</html>
