@@ -10,30 +10,25 @@
 #js
 <script>
 function readURL(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
+    var dftlsize=2048000;
+    if(input.files[0].size>dftlsize){
+       $(input).val('');
+       toastr.error("Sorry your Image size exceeds limit 2 MB");
+       $('#blah').attr('src', '<?=base_url()?>assets/images/user.png');
+          $('#blah').hide();
+          $('#blah').fadeIn(650);
+       return false; 
+      }else{
+            var reader = new FileReader();
+            reader.onload = function(e) {
           $('#blah').attr('src', e.target.result);
           $('#blah').hide();
           $('#blah').fadeIn(650);
         }
         reader.readAsDataURL(input.files[0]);
-      }
+      } 
     }
-    $("#imgInp").change(function() {
+$("#imgInp").change(function() {
       readURL(this);
 });
-
-
-
-    $('#imgInp').bind('change', function() {
-        var val = $(this).val();    
-        var dftlsize=2048000;    
-      if(this.files[0].size>dftlsize)
-      {
-       $(this).val('');
-       alert("Sorry your Image size exceeds limit 2 MB");
-       return false; 
-      }
-    });
-</script> 
+</script>
